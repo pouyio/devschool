@@ -10,8 +10,11 @@ export class NavbarComponent implements OnInit {
 
   @Output() languageChange: EventEmitter<string>;
 
+  links: string[];
+
   constructor() {
     this.languageChange = new EventEmitter();
+    this.links = [ 'home', 'favourites', 'profile'];
    }
 
   ngOnInit() {
