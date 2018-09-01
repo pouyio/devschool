@@ -20,7 +20,7 @@ import { FilterAvailablePipe } from './filter-available.pipe';
     LanguageSelectorComponent,
     ListItemComponent,
     ItemComponent,
-    FilterAvailablePipe
+    FilterAvailablePipe,
   ],
   imports: [
     BrowserModule,

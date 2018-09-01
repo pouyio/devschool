@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Item } from './models';
 
 @Component({
   selector: 'dev-root',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'devschool';
   language: string;
-  selected: string;
+  selectedLink: string;
+  item: Item;
+
+  selectedItem(item: Item) {
+    this.selectedLink = 'item';
+    this.item = item;
+  }
 }
