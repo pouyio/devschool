@@ -9,9 +9,9 @@
       <li class="nav-item" [ngClass]="{active: link === selected}" *ngFor="let link of links">
         <a class="nav-link" (click)="select(link)">{{ link }}</a>
       </li>
-      <li class="nav-item">
-        <dev-language-selector (languageChange)="onlanguageChange($event)"></dev-language-selector>
-      </li>
     </ul>
+    <span class="ml-auto mr-3">
+      <dev-language-selector (languageChange)="onlanguageChange($event)"></dev-language-selector>
+    </span>
   </div>
 </nav>
