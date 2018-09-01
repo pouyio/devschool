@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Output } from '@angular/core';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'dev-navbar',
@@ -8,13 +9,17 @@ import { Output } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  @Input() selected: string;
+  @Output() selectedChange: EventEmitter<string>;
   @Output() languageChange: EventEmitter<string>;
 
   links: string[];
 
   constructor() {
     this.languageChange = new EventEmitter();
-    this.links = [ 'home', 'favourites', 'profile'];
+    this.selectedChange = new EventEmitter();
+    this.links = [ 'welcome', 'list'];
+    this.selected = this.links[0];
    }
 
   ngOnInit() {
@@ -22,6 +27,11 @@ export class NavbarComponent implements OnInit {
 
   onlanguageChange(language: string) {
     this.languageChange.emit(language);
+  }
+
+  select(link: string) {
+    this.selected = link;
+    this.selectedChange.emit(this.selected);
   }
 
 }
