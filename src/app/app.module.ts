@@ -10,6 +10,7 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
 import { ListItemComponent } from './list-item/list-item.component';
 import { ItemComponent } from './item/item.component';
 import { FilterAvailablePipe } from './filter-available.pipe';
+import { TranslatePipe } from './translate/translate.pipe';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { FilterAvailablePipe } from './filter-available.pipe';
     ListItemComponent,
     ItemComponent,
     FilterAvailablePipe,
+    TranslatePipe,
   ],
   imports: [
     BrowserModule,

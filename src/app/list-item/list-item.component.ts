@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Item } from '../models';
 import { Output } from '@angular/core';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'dev-list-item',
@@ -12,6 +13,7 @@ export class ListItemComponent implements OnInit {
   items: Item[];
   filterAvailable: boolean;
 
+  @Input() language: string;
   @Output() selectedItem: EventEmitter<Item>;
 
   constructor() {
