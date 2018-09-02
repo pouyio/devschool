@@ -10,8 +10,14 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
 import { ListItemComponent } from './list-item/list-item.component';
 import { ItemComponent } from './item/item.component';
 import { FilterAvailablePipe } from './filter-available.pipe';
-import { TranslatePipe } from './translate/translate.pipe';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -21,13 +27,20 @@ import { TranslatePipe } from './translate/translate.pipe';
     LanguageSelectorComponent,
     ListItemComponent,
     ItemComponent,
-    FilterAvailablePipe,
-    TranslatePipe,
+    FilterAvailablePipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    BsDropdownModule.forRoot()
+    HttpClientModule,
+    BsDropdownModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
 
   ],
   providers: [],

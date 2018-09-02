@@ -7,8 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
 
-  @Input() language: string;
-
   constructor() {
   }
 
