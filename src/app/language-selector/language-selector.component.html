@@ -1,10 +1,10 @@
 <div class="btn-group" dropdown>
   <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-light dropdown-toggle" aria-controls="dropdown-basic">
-    Language <span class="caret"></span>
+      {{ currentLang() | translate }} <span class="caret"></span>
   </button>
-  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-    <li role="menuitem" (click)="onLanguageChange('es')"><a class="dropdown-item" href="#">Español</a></li>
-    <li role="menuitem" (click)="onLanguageChange('en')"><a class="dropdown-item" href="#">English</a></li>
-    <li role="menuitem" (click)="onLanguageChange('ch')"><a class="dropdown-item" href="#">中国</a></li>
+  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic" style="min-width: auto">
+    <li role="menuitem" (click)="onLanguageChange('es')"><a class="dropdown-item" href="#">🇪🇸</a></li>
+    <li role="menuitem" (click)="onLanguageChange('en')"><a class="dropdown-item" href="#">🇬🇧</a></li>
+    <li role="menuitem" (click)="onLanguageChange('ch')"><a class="dropdown-item" href="#">🇨🇳</a></li>
   </ul>
 </div>
