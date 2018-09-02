@@ -28,11 +28,11 @@
         <div class="card-footer">
           <div class="row">
             <div class="col-9">
-              <button type="button" class="btn btn-block btn-info" (click)="addToCart()" [disabled]="added || !item.available">Add
+              <button type="button" class="btn btn-block btn-info" (click)="addToCart()" [disabled]="itemIsInCart() || !item.available">Add
                 to Cart</button>
             </div>
             <div class="col-3">
-              <button type="button" class="btn btn-outline-secondary btn-md" (click)="removeFromCart()" [disabled]="!added">
+              <button type="button" class="btn btn-outline-secondary btn-md" (click)="removeFromCart()" [disabled]="!itemIsInCart()">
                 🗑️
               </button>
             </div>

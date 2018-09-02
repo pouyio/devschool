@@ -1,28 +1,42 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { Output } from '@angular/core';
 import { Input } from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { map } from 'rxjs/operators';
+import { CartItem } from '../models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'dev-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnDestroy {
 
   @Input() selected: string;
   @Output() selectedChange: EventEmitter<string>;
   @Output() languageChange: EventEmitter<string>;
 
   links: string[];
+  cartLength = 0;
+  private subscription: Subscription;
 
-  constructor() {
+  constructor(private cartService: CartService) {
     this.languageChange = new EventEmitter();
     this.selectedChange = new EventEmitter();
-    this.links = [ 'welcome', 'list'];
+    this.links = ['welcome', 'list', 'cart'];
     this.selected = this.links[0];
-   }
+    this.subscription = this.cartService.getItems().pipe(
+      map((items: CartItem[]) => {
+        return items.map(i => i.quantity).reduce((acc, quantity) => acc + quantity, 0);
+      }
+      )).subscribe(totals => this.cartLength = totals);
+  }
 
-  ngOnInit() {
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   onlanguageChange(language: string) {

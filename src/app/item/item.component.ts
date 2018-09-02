@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../models';
 import { Input } from '@angular/core';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'dev-item',
@@ -10,21 +11,22 @@ import { Input } from '@angular/core';
 export class ItemComponent implements OnInit {
 
   @Input() item: Item;
-  added = false;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
   }
 
   addToCart() {
-    this.added = true;
-    console.log('Added: ', this.item);
+    this.cartService.addItem(this.item);
   }
 
   removeFromCart() {
-    this.added = false;
-    console.log('Removed: ', this.item);
+    this.cartService.removeItem(this.item.id);
+  }
+
+  itemIsInCart(): boolean {
+    return this.cartService.isItemPresent(this.item.id);
   }
 
 }
