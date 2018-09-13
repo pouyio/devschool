@@ -60,4 +60,9 @@ export class ItemsService {
   getItems(): Observable<Item[]> {
     return of(this.items);
   }
+
+  getItem(id: number): Observable<Item> {
+    const item = this.items.find(i => i.id === id);
+    return of(item);
+  }
 }

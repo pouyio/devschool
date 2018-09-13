@@ -5,6 +5,7 @@ import { CartService } from '../services/cart.service';
 import { map } from 'rxjs/operators';
 import { CartItem } from '../models';
 import { Subscription } from 'rxjs';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'dev-navbar',
@@ -24,7 +25,7 @@ export class NavbarComponent implements OnDestroy {
   constructor(private cartService: CartService) {
     this.languageChange = new EventEmitter();
     this.selectedChange = new EventEmitter();
-    this.links = ['welcome', 'list', 'cart'];
+    this.links = ['welcome', 'list', 'login', 'cart'];
     this.selected = this.links[0];
     this.subscription = this.cartService.getItems().pipe(
       map((items: CartItem[]) => {

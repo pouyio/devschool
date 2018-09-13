@@ -4,6 +4,7 @@ import { Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { ItemsService } from '../services/items.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dev-list-item',
@@ -14,20 +15,13 @@ export class ListItemComponent implements OnInit {
 
   items$: Observable<Item[]>;
   filterAvailable: boolean;
+  filterActive: boolean;
 
-  @Input() language: string;
-  @Output() selectedItem: EventEmitter<Item>;
-
-  constructor(private itemsService: ItemsService) {
-    this.selectedItem = new EventEmitter();
+  constructor(private itemsService: ItemsService, private router: Router) {
     this.items$ = this.itemsService.getItems();
    }
 
   ngOnInit() {
-  }
-
-  itemSelected(item: Item) {
-    this.selectedItem.emit(item);
   }
 
 }

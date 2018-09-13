@@ -2,12 +2,12 @@
   <div class="d-flex justify-content-between align-items-baseline">
     <h1 translate>items-list</h1>
     <span>
-        {{ 'show-available' | translate}}: <input type="checkbox" [(ngModel)]="filterActve">
+        {{ 'show-available' | translate}}: <input type="checkbox" [(ngModel)]="filterActive">
     </span>
   </div>
   <div class="row">
-    <div class="col-6" *ngFor="let item of items$ | async | filterAvailable: filterActve">
-      <div class="list-group-item d-flex justify-content-between" [class.disabled]="!item.available" (click)="itemSelected(item)">
+    <div class="col-6" *ngFor="let item of items$ | async | filterAvailable: filterActive">
+      <div class="list-group-item d-flex justify-content-between" [class.disabled]="!item.available" [routerLink]="['/list', item.id]">
         <span>{{ item.name }}</span>
         <span>{{ item.price | currency : item.currency }}</span>
       </div>

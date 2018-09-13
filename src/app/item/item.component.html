@@ -28,7 +28,7 @@
         <div class="card-footer">
           <div class="row">
             <div class="col-9">
-              <button type="button" class="btn btn-block btn-info" (click)="addToCart()" [disabled]="itemIsInCart() || !item.available">Add
+              <button type="button" class="btn btn-block btn-info" (click)="addToCart(template)" [disabled]="itemIsInCart() || !item.available">Add
                 to Cart</button>
             </div>
             <div class="col-3">
@@ -42,3 +42,17 @@
     </div>
   </div>
 </div>
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">🍆</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This is a modal.
+  </div>
+</ng-template>
