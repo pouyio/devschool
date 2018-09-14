@@ -1,11 +1,11 @@
 import { Component, OnInit, EventEmitter, OnDestroy } from '@angular/core';
 import { Output } from '@angular/core';
 import { Input } from '@angular/core';
-import { CartService } from '../services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { map } from 'rxjs/operators';
-import { CartItem } from '../models';
+import { CartItem } from '../../models';
 import { Subscription } from 'rxjs';
-import { LoginService } from '../login.service';
+import { LoginService } from '../../login.service';
 
 @Component({
   selector: 'dev-navbar',
