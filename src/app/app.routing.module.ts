@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { ListItemComponent } from './list-item/list-item.component';
 import { AuthGuard } from './auth.service';
-import { ItemComponent } from './item/item.component';
 import { ItemResolver } from './item-resolver.service';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
+import { ItemsModule } from './items/items.module';
 
 const appRoutes: Routes = [
   {
@@ -17,15 +16,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'list',
-    component: ListItemComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'list/:id',
-    component: ItemComponent,
-    resolve: {
-      item: ItemResolver
-    },
+    loadChildren: './items/items.module#ItemsModule',
     canActivate: [AuthGuard]
   },
   {
@@ -52,8 +43,6 @@ export class AppRoutingModule { }
 
 export const appRoutedComponents = [
   WelcomeComponent,
-  ListItemComponent,
-  ItemComponent,
   CartComponent,
   LoginComponent
 ];

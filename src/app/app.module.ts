@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { FilterAvailablePipe } from './filter-available.pipe';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -17,7 +16,6 @@ import { AppRoutingModule, appRoutedComponents } from './app.routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    FilterAvailablePipe,
     appRoutedComponents
   ],
   imports: [
