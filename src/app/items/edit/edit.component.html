@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="m-auto col-6">
+      <form [formGroup]="itemForm">
+        <div class="form-group" [ngClass]="{'is-invalid': itemForm.get('name').valid}">
+          <label>Name</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" formControlName="description">
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input type="number" class="form-control" formControlName="price">
+        </div>
+        <div class="form-group">
+          <select class="custom-select" formControlName="currency">
+            <option [value]="currency" *ngFor="let currency of currencies">{{currency}}</option>
+          </select>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" formControlName="available">
+          <label class="form-check-label">Available</label>
+        </div>
+      </form>
+
+      <pre>
+        {{
+          description
+        }}
+      </pre>
+    </div>
+  </div>
+</div>

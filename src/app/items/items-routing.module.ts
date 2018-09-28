@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListItemComponent } from './list-item/list-item.component';
 import { ItemComponent } from './item/item.component';
 import { ItemResolver } from '../item-resolver.service';
+import { EditComponent } from './edit/edit.component';
 
 const itemsRoutes: Routes = [
   {
@@ -13,6 +14,13 @@ const itemsRoutes: Routes = [
   {
     path: ':id',
     component: ItemComponent,
+    resolve: {
+      item: ItemResolver
+    }
+  },
+  {
+    path: ':id/edit',
+    component: EditComponent,
     resolve: {
       item: ItemResolver
     }
@@ -27,5 +35,6 @@ export class ItemsRoutingModule { }
 
 export const itemsRoutedComponents = [
   ListItemComponent,
-  ItemComponent
+  ItemComponent,
+  EditComponent
 ];

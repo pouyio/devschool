@@ -5,8 +5,13 @@
     </div>
     <div class="col pr-0">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between align-items-center">
           <h5 class="my-0 font-weight-normal">{{item.name | uppercase}}</h5>
+          <div>
+            <button type="button" class="btn btn-outline-secondary btn-md" (click)="edit()">
+              ✏️
+            </button>
+          </div>
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">{{item.price | currency: item.currency}}</h1>
@@ -31,7 +36,7 @@
               <button type="button" class="btn btn-block btn-info" (click)="addToCart(template)" [disabled]="itemIsInCart() || !item.available">Add
                 to Cart</button>
             </div>
-            <div class="col-3">
+            <div class="col-3 text-right">
               <button type="button" class="btn btn-outline-secondary btn-md" (click)="removeFromCart()" [disabled]="!itemIsInCart()">
                 🗑️
               </button>

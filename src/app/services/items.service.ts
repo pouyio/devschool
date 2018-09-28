@@ -15,7 +15,7 @@ export class ItemsService {
       name: 'armadura',
       description: 'Es una armadura estupenda',
       price: 20,
-      currency: 'EUR',
+      currency: 'USD',
       available: true,
       img: 'https://uploads-ssl.webflow.com/57e5747bd0ac813956df4e96/5aebae14c6d254621d81f826_placeholder.png'
     },
@@ -51,7 +51,7 @@ export class ItemsService {
       name: 'caballo',
       description: 'Es un caballo muy cariñoso',
       price: 980,
-      currency: 'USD',
+      currency: 'YEN',
       available: true,
       img: 'https://uploads-ssl.webflow.com/57e5747bd0ac813956df4e96/5aebae14c6d254621d81f826_placeholder.png'
     }];

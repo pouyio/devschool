@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../../models';
 import { Input } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TemplateRef } from '@angular/core';
 
@@ -20,7 +20,9 @@ export class ItemComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.item = this.route.snapshot.data.item;
@@ -38,6 +40,10 @@ export class ItemComponent implements OnInit {
 
   itemIsInCart(): boolean {
     return this.cartService.isItemPresent(this.item.id);
+  }
+
+  edit() {
+    this.router.navigate(['./edit'], {relativeTo: this.activatedRoute});
   }
 
 }
