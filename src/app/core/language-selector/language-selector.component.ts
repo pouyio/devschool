@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'dev-language-selector',
@@ -8,8 +9,9 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 export class LanguageSelectorComponent implements OnInit {
 
   @Output() languageChange: EventEmitter<string>;
+  _language: string;
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     this.languageChange = new EventEmitter();
    }
 
@@ -17,7 +19,12 @@ export class LanguageSelectorComponent implements OnInit {
   }
 
   onLanguageChange(language: string) {
+    this._language = language;
     this.languageChange.emit(language);
+  }
+
+  currentLang(): string {
+    return this.translate.currentLang || this.translate.defaultLang;
   }
 
 
